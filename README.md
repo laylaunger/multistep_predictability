@@ -2,20 +2,19 @@
 
 This project explores how the predictability of upcoming words varies across a text.
 
-It uses GPT-2 to compute greedy predictions for multiple steps ahead and evaluates how well those predictions match the actual text, one word at a time.
+It processes a text token-by-token and at each point, uses GPT-2 to generate greedy predictions for multiple tokens ahead evaluate how well those predictions match the actual text.
 
-The aim is to identify regions in a passage where future language is: (1) highly predictable multiple words ahead, (2) locally predictable for just the next word but not beyond, or (3) unpredictable. 
+The aim is to identify regions in a text where upcoming language is: (1) highly predictable multiple words ahead, (2) locally predictable for just the next word but not beyond, or (3) unpredictable. 
 
 ## Measuring Predictability
 
 At each word in an input text:
-- Uses **greedy decoding** with GPT-2 to predict `n` words into the future
-- Compares each prediction with the actual word
-- Records:
+- Use **greedy prediction** with GPT-2 to predict `n` words into the future
+- Compare each prediction with the actual word and record:
   - Whether the model’s prediction matched the true word (`match`)
-  - The prediction’s **rank** (i.e., how likely the correct word was)
-  - The model's **confidence score**
-- Outputs both the predictions and their alignment with actual outcomes
+  - The prediction’s `rank` (i.e., how likely the correct word was)
+  - The model's `confidence` score (i.e., how strongly the top word was predicted versus others)
+- Output both the predictions and their alignment with actual outcomes
 
 ## Project Structure
 
